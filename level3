@@ -88,12 +88,13 @@ As the Manager of Manchester United, you must select 11 players following the sa
 2. Amazon Software Engineer 
 
 Amazon has hired you as a software engineer. Your first task is to create a system that allows calculating the price of shipping based on distance. Fulfill the following requirements:
-Amazon has one branch in each state of the USA.
-Research the approximate distance between each pair of states.
-The price is $50 USD per kilometer.
-The minimum number of packages to transport is 100, and the maximum is 500.
-If the number of packages exceeds 200, a larger vehicle should be recommended, with a price of $60 USD per kilometer.
-Based on the distance, the system should calculate an estimated delivery time.
+
+    -Amazon has one branch in each state of the USA.
+    -Research the approximate distance between each pair of states.
+    -The price is $50 USD per kilometer.
+    -The minimum number of packages to transport is 100, and the maximum is 500.
+    -If the number of packages exceeds 200, a larger vehicle should be recommended, with a price of $60 USD per kilometer.
+    Based on the distance, the system should calculate an estimated delivery time.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 3. Real State Rent System 
@@ -107,7 +108,9 @@ Second home: 150 square meters, 2 bedrooms, 2 bathrooms
 Third home: 100 square meters, 2 bedrooms, 1 bathroom
 Fourth home: 100 square meters, 1 bedroom, 2 bathrooms
 Fifth home: 80 square meters, 1 bedroom, 1 bathroom
-The program must quote the price of the home according to: square meters, number of bedrooms, and number of bathrooms. Each bedroom adds $40, and each bathroom adds $30. Each square meter has a cost of $90.
+
+The program must quote the price of the home according to: square meters, number of bedrooms, and number of bathrooms.
+Each bedroom adds $40, and each bathroom adds $30. Each square meter has a cost of $90.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 4. United Direct: The Manchester United's Shop
@@ -118,15 +121,16 @@ United Direct, the official store of Manchester United FC, has hired you as a de
 
 Develop the shopping cart of this application considering the following features:
 
-The jerseys are classified by: Men, Women, and Children.
-Sizes range from XS to 3XL.
-All men's and women's jerseys are priced at £100 if they are short-sleeved.
-Long-sleeved jerseys cost £120.
-Short-sleeved children's jerseys are priced at £70.
-Long-sleeved children's jerseys are priced at £90.
-If you are a club member, you get a 20% discount on the total purchase.
-The user can buy as many jerseys as they want.
-If the buyer wishes to personalize their jersey with a player's number, there is an additional charge of £25.
+    The jerseys are classified by: Men, Women, and Children.
+    Sizes range from XS to 3XL.
+    All men's and women's jerseys are priced at £100 if they are short-sleeved.
+    Long-sleeved jerseys cost £120.
+    Short-sleeved children's jerseys are priced at £70.
+    Long-sleeved children's jerseys are priced at £90.
+    If you are a club member, you get a 20% discount on the total purchase.
+    The user can buy as many jerseys as they want.
+    If the buyer wishes to personalize their jersey with a player's number, there is an additional charge of £25.
+
 The stock is as follows:
 
 FOR MEN:
@@ -163,26 +167,27 @@ A British start-up specializing in the manufacturing of high-security, high-spee
 Currently, it offers 3 types of aircraft ready for sale.
 
 Wayne Rooney Plane:
-Quality AAA
-200 economy class seats
-70 VIP seats
-90 square meters
-Security system AAA
-Speed level AAA
+    Quality AAA
+    200 economy class seats
+    70 VIP seats
+    90 square meters
+    Security system AAA
+    Speed level AAA
 Eric Cantona Plane:
-Quality AAA
-150 economy class seats
-80 VIP seats
-110 square meters
-Security system AAA
-Speed level AA
+    Quality AAA
+    150 economy class seats
+    80 VIP seats
+    110 square meters
+    Security system AAA
+    Speed level AA
 Bobby Charlton Plane:
-Quality AA
-100 economy class seats
-40 VIP seats
-120 square meters
-Security system AA
-Speed level A
+    Quality AA
+    100 economy class seats
+    40 VIP seats
+    120 square meters
+    Security system AA
+    Speed level A
+    
 The AAA material costs £60,000.
 The AA material costs £54,000.
 The A material costs £48,000.
