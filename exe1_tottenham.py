@@ -35,7 +35,30 @@ man_midfielders = {"Sofyan Amrabat": 76, "Scott McTominay": 80, "Bruno Fernandes
 man_forwards = {"Anthony Martial": 50, "Marcus Rashford": 76, "Antony": 75, "Rasmus Højlund": 80, 
                 "Alejandro Garnacho": 85, "Facundo Pellistri": 75}
 
-list_tot = [tot_goalkeapers, tot_defenders, tot_midfielders, tot_forwards]
+list_tot = [tot_goalkeapers, tot_defenders, tot_defenders, tot_defenders, tot_defenders, 
+            tot_midfielders, tot_midfielders, tot_midfielders, tot_forwards, tot_forwards,
+            tot_forwards]
+tot_players =[]
+
+pre_players= f"""\
+        {players[1]}
+    
+    *****************
+     ***************
+      *************
+       ***********
+        *********
+         *******
+          *****
+           ***
+            *\
+"""
+
+def select_tot():
+    for tot in list_tot:
+        print(len(tot))
+
+select_tot
 
 
 
