@@ -14,7 +14,7 @@ import random
 
 #data
 
-tot_goalkeapers = {"Hugo Lloris": 85," Guglielmo Vicario": 79, "Fraser Forster": 79,
+tot_goalkeapers = {"Hugo Lloris": 85,"Guglielmo Vicario": 79, "Fraser Forster": 79,
                   "Brandon Austin": 79}
 tot_defenders = {"Eric Dier": 80, "Cristian Romero": 80, "Davinson Sánchez": 74, 
                  "Japhet Tanganga": 70, "Matt Doherty": 70, "Djed Spence": 70, 
@@ -38,27 +38,34 @@ man_forwards = {"Anthony Martial": 50, "Marcus Rashford": 76, "Antony": 75, "Ras
 list_tot = [tot_goalkeapers, tot_defenders, tot_defenders, tot_defenders, tot_defenders, 
             tot_midfielders, tot_midfielders, tot_midfielders, tot_forwards, tot_forwards,
             tot_forwards]
-tot_players =[]
-
-pre_players= f"""\
-        {players[1]}
-    
-    *****************
-     ***************
-      *************
-       ***********
-        *********
-         *******
-          *****
-           ***
-            *\
-"""
+list_man = [man_goalkeapers, man_defenders, man_defenders, man_defenders, man_defenders, 
+            man_midfielders, man_midfielders, man_midfielders, man_forwards, man_forwards,
+            man_forwards]
+tot_players = []
+man_players = []
 
 def select_tot():
+    list_select = []
     for tot in list_tot:
-        print(len(tot))
+        num_random = random.randrange(0,len(tot)-1)
+        list_select.append(num_random)
+                 
+    list_player_tot = []
+    for x in range(0,10):
+        players = list(list_tot[x].keys())
+        index = list_select[x]
+        list_player_tot.append(players[index])
+    
+    return list_player_tot
 
-select_tot
-
-
-
+def print_players(list_player_tot):
+    list_positions = ['Portero:\n------------', '\nDefensa:\n------------', '---', '---', '---', 
+                      '\nMediocampo:\n------------', '---', '---', '\nDelantero:\n------------', '---', '---']
+    for x in range(0,10):
+        print(list_positions[x])
+        name = list_player_tot[x]
+        points = list_tot[x]
+        print(f"{name} - {points[name]}")
+        
+list_player_tot = select_tot()
+print_players(list_player_tot)
