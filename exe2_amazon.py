@@ -12,7 +12,7 @@ Based on the distance, the system should calculate an estimated delivery time.
 import os 
 import pandas as pd
 import pyarrow
-from geopy.distance import distance
+import geopy.distance 
 
 
 #data
@@ -32,14 +32,14 @@ def info_shipment():
                 num = 0
         print("\n-------------------------------------------------------------------------")
         
-        state_depar = input('Estado de salida del envio: ').capitalize()
+        state_depar = input('Estado de salida del envio: ').title()
         if state_depar not in list(statesDF['state']):
             os.system('cls')
             print('El nombre del estado de salid no ha sido correctamente introducido.')
             input('Pulsa enter para continuar')
             continue
             
-        state_arrival = input('Estado receptor del envio:').capitalize()
+        state_arrival = input('Estado receptor del envio:').title()
         if state_arrival not in list(statesDF['state']):
             os.system('cls')
             print('El nombre del estado receptor no ha sido correctamente introducido.')
@@ -55,9 +55,32 @@ def info_shipment():
             continue
         
         return state_depar, state_arrival, num_pack
-            
+def distance_states(state_depar, state_arrival):
+    coords_dep = (statesDF.loc[statesDF['state']==state_depar, 'latitude'].iloc[0],
+              statesDF.loc[statesDF['state']==state_depar, 'longitude'].iloc[0])
+    coords_arr = (statesDF.loc[statesDF['state']==state_arrival, 'latitude'].iloc[0],
+              statesDF.loc[statesDF['state']==state_arrival, 'longitude'].iloc[0])
     
+    distance = geopy.distance.geodesic(coords_arr,coords_dep).km
+    return distance
+def price_time(distance, num_pack):
+    time_min = round((distance/860)*60)
+    
+    if num_pack <= 200:
+        price = distance*50      
+    else:
+        price = distance*60
+    return time_min, price 
 
 #code
 state_depar, state_arrival, num_pack = info_shipment()
+
+distance = distance_states(state_arrival, state_depar)
+print(distance)
+time_min, price = price_time(distance, num_pack)
+
+os.system('cls')
+print(f'El vuelo entre los centros de distribución ubicados en los centros de los estados\n'
+      f'de {state_depar} y {state_arrival} tardara aproximadamente {round(time_min)} minutos en recorrer\n'
+      f'los {round(distance)} kilómetros. El precio sera de {round(price)}$.')
 
