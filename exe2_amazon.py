@@ -33,20 +33,21 @@ def info_shipment():
         print("\n-------------------------------------------------------------------------")
         
         state_depar = input('Estado de salida del envio: ').capitalize()
-        if state_depar not in statesDF['state']:
+        if state_depar not in list(statesDF['state']):
             os.system('cls')
             print('El nombre del estado de salid no ha sido correctamente introducido.')
             input('Pulsa enter para continuar')
             continue
             
         state_arrival = input('Estado receptor del envio:').capitalize()
-        if state_arrival not in statesDF['state']:
+        if state_arrival not in list(statesDF['state']):
             os.system('cls')
             print('El nombre del estado receptor no ha sido correctamente introducido.')
             input('Pulsa enter para continuar')
             continue
             
         num_pack = input('Número de paquetes a enviar: ')
+        num_pack = int(num_pack)
         if num_pack < 100 or num_pack > 500:
             os.system('cls')
             print('El envio tiene que tener un mínimo de 100 paquetos y un máximo de 500.')
@@ -59,3 +60,4 @@ def info_shipment():
 
 #code
 state_depar, state_arrival, num_pack = info_shipment()
+
