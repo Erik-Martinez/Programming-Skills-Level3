@@ -29,6 +29,8 @@ dic_type = {0: 'Hombre', 1: 'Mujer ', 2: 'Niños '}
 dic_sleeve = {0: 'corta', 1: 'larga'}
 dic_size = {0: 'M', 1: 'XL', 2: '3Xl'}
 
+total_price = 0
+
 #print(shopDF)
 
 #funtions 
@@ -98,9 +100,11 @@ def info_order():
             selection = shopDF.query(exp)
             stock = selection.loc[:,'stock']
             stock = int(stock.iloc[0])
+            price = selection.loc[:, 'price']
+            price = int(price.iloc[0])
             
             if stock >= num_jer:
-                return type_jer, sleeve, size, num_jer
+                return exp, num_jer, price
             
             elif stock <= 0:
                 os.system('cls')
@@ -115,18 +119,78 @@ def info_order():
                     'es superior al stock.')
                 input('Pulsa enter para continuar.')
                 os.system('cls')
+                continue    
+def personalize():
+    while True:
+        personalize = input('Te gustaria perzonalizar las camisetas de este pedido (Si/No): ')
+        personalize.lower()
+        
+        if personalize == 'si' or personalize == 's':
+            personalize = 1
+            return personalize
+        elif personalize == 'no' or personalize == 'n':
+            personalize = 0
+            return personalize
+        else:
+            os.system('cls')
+            print('No he entendido tu repuesta.')
+            input('Pulsa enter para continuar.')
+def calculate_prize(member, num_jer, price ,personalize):
+    jer_price = 0
+    
+    jer_price = price*num_jer
+    
+    if personalize == 1:
+        jer_price += 25
+    
+    if member == 1:
+        dis = jer_price*0.2
+        jer_price -= dis
+    
+    return jer_price          
+            
+# code
+member = confirm_membership()
+while True:  
+    exp, num_jer, price = info_order()
+    personalize = personalize()
+    price = calculate_prize(member, num_jer, price ,personalize)
+
+    while True:
+        os.system('cls')
+        print(f'El precio por {num_jer} camisetas es de £{price}')
+        decision = input('Añadir a la cesta (Si/No): ')
+        dicision = decision.lower()
+
+        if decision == 'si' or decision == 's':
+            mask = shopDF.eval(exp)
+            shopDF.loc[mask, 'stock'] = int(shopDF.loc[mask, 'stock'].iloc[0]) - num_jer
+            total_price += price
+            next
+        elif decision == 'no' or decision == 'n':
+            next
+        else:
+            os.system('cls')
+            print('No he entendido tu repuesta.')
+            input('Pulsa enter para continuar.')
+            
+        while True:
+            os.system('cls')
+            print(f'El precio total actual es de £{total_price}')
+            decision = input('Hacer mas compras(Si/No): ')
+            dicision = decision.lower()
+
+            if decision == 'si' or decision == 's':
+                break
+            elif decision == 'no' or decision == 'n':
+                exit()
+            else:
+                os.system('cls')
+                print('No he entendido tu repuesta.')
+                input('Pulsa enter para continuar.')
                 continue
-            
-            
-            
-        
- 
+        break
         
         
-            
-            
-            
-            
-# code 
-#member = confirm_membership()
-type_jer, sleeve, size, num_jer = info_order()
+        
+    
