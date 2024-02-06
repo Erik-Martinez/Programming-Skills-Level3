@@ -30,3 +30,29 @@ dic_sleeve = {0: 'corta', 1: 'larga'}
 dic_size = {0: 'M', 1: 'XL', 2: '3Xl'}
 
 print(shopDF)
+
+#funtions 
+def confirm_membership():
+    while True:
+        os.system('cls')
+        member = input('Eres miembro del club del Manchester United (Si/No): ')
+        member = member.lower()
+        
+        if member == 'si' or member == 's':
+            member = 1
+            return member
+        elif member == 'no' or member == 'n':
+            member = 0 
+            return member
+        else:
+            os.system('cls')
+            print('No he entendido tu respuesta.')
+            input('Pulsa enter para continuar.')
+            
+def 
+            
+            
+            
+            
+# code 
+confirm_membership()
