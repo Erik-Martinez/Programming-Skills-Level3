@@ -25,11 +25,11 @@ import pandas as pd
 
 shopDF = pd.read_csv('data/shop_stock.csv', sep=';')
 
-dic_type = {0: 'Hombre', 1: 'Mujer', 2: 'Niños'}
+dic_type = {0: 'Hombre', 1: 'Mujer ', 2: 'Niños '}
 dic_sleeve = {0: 'corta', 1: 'larga'}
 dic_size = {0: 'M', 1: 'XL', 2: '3Xl'}
 
-print(shopDF)
+#print(shopDF)
 
 #funtions 
 def confirm_membership():
@@ -48,11 +48,85 @@ def confirm_membership():
             os.system('cls')
             print('No he entendido tu respuesta.')
             input('Pulsa enter para continuar.')
+def info_order():
+    while True:
+        os.system('cls')
+        for x in dic_type.items():
+            print(f'| {x[1]} | {x[0]} |')
             
-def 
+        type_jer = input('Tipo camiseta: ')
+        
+        if type_jer not in ['0', '1', '2']:
+            os.system('cls')
+            print('No he entendido tu repuesta.')
+            input('Pulsa enter para continuar.')
+            continue
+            
+        print('-----------------------')
+            
+        for x in dic_sleeve.items():
+            print(f'| {x[1].capitalize()} | {x[0]} |')
+            
+        sleeve = input('Tipo de manga: ')
+        
+        if sleeve not in ['0', '1']:
+            os.system('cls')
+            print('No he entendido tu repuesta.')
+            input('Pulsa enter para continuar.')
+            continue
+            
+        print('-----------------------')
+        
+        for x in dic_size.items():
+            print(f'| {x[1].capitalize()} | {x[0]} |')
+        
+        size = input('Talla de camiseta: ')
+        
+        if size not in ['0', '1', '2']:
+            os.system('cls')
+            print('No he entendido tu repuesta.')
+            input('Pulsa enter para continuar.')
+            continue
+        
+        while True:
+            print('-----------------------')
+            
+            num_jer = input('Número de camisetas a comprar: ')
+            num_jer = int(num_jer)
+            
+            exp = f'type == {type_jer} and sleeve == {sleeve} and size == {size}'
+            selection = shopDF.query(exp)
+            stock = selection.loc[:,'stock']
+            stock = int(stock.iloc[0])
+            
+            if stock >= num_jer:
+                return type_jer, sleeve, size, num_jer
+            
+            elif stock <= 0:
+                os.system('cls')
+                print('No nos quedan existencia de esas camisetas.')
+                input('Pulsa enter para continuar.')
+                os.system('cls')
+                return
+            
+            else: 
+                os.system('cls')
+                print('Lo lamentamos pero en número de camisetas que solicitas es '
+                    'es superior al stock.')
+                input('Pulsa enter para continuar.')
+                os.system('cls')
+                continue
+            
+            
+            
+        
+ 
+        
+        
             
             
             
             
 # code 
-confirm_membership()
+#member = confirm_membership()
+type_jer, sleeve, size, num_jer = info_order()
