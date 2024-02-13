@@ -58,14 +58,62 @@ def select_tot():
     
     return list_player_tot
 
-def print_players(list_player_tot):
+def print_players(list_players, team):
     list_positions = ['Portero:\n------------', '\nDefensa:\n------------', '---', '---', '---', 
                       '\nMediocampo:\n------------', '---', '---', '\nDelantero:\n------------', '---', '---']
     for x in range(0,10):
         print(list_positions[x])
-        name = list_player_tot[x]
-        points = list_tot[x]
+        name = list_players[x]
+        if team == 'tot':  
+            points = list_tot[x]
+        elif team == 'man':
+            points = list_man[x]
         print(f"{name} - {points[name]}")
         
+def select_players(list_player_tot):
+    list_player_man = []
+    for x in  range(0,10):
+        name = list_player_tot[x]
+        points_man = 0
+        man_player = None
+        if x == 0:
+            points_tot = tot_goalkeapers[name]
+            for man in man_goalkeapers.items():
+                if (man[1] >= points_tot or man[1] >= points_man) and man[0] not in list_player_man:
+                    man_player = man[0]
+                    points_man = man[1]
+            list_player_man.append(man_player)
+        elif x in [1, 2, 3, 4]:
+            points_tot = tot_defenders[name]
+            for man in man_defenders.items():
+                if (man[1] >= points_tot or man[1] >= points_man) and man[0] not in list_player_man:
+                    man_player = man[0]
+                    points_man = man[1]
+            list_player_man.append(man_player)
+        elif x in [5, 6, 7]:
+            points_tot = tot_midfielders[name]
+            for man in man_midfielders.items():
+                if (man[1] >= points_tot or man[1] >= points_man) and man[0] not in list_player_man:
+                    man_player = man[0]
+                    points_man = man[1]
+            list_player_man.append(man_player)
+        elif x in [8, 9, 10]:
+            points_tot = tot_forwards[name]
+            for man in man_forwards.items():
+                if (man[1] >= points_tot or man[1] >= points_man) and man[0] not in list_player_man:
+                    man_player = man[0]
+                    points_man = man[1]
+            list_player_man.append(man_player)
+         
+    return list_player_man
+                
+    
+    
 list_player_tot = select_tot()
-print_players(list_player_tot)
+print_players(list_player_tot, team='tot')
+list_player_man = select_players(list_player_tot)
+print('-----------------------------')
+print('MANCHESTER')
+print_players(list_player_man, 'man')
+
+
